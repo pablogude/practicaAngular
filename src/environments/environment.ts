@@ -3,6 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  apiUrlJsonPlaceholder: `https://jsonplaceholder.typicode.com`, 
+  apiUrlReqRes: `https://reqres.in`,
   production: false
 };
 
