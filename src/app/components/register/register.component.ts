@@ -46,8 +46,8 @@ export class RegisterComponent implements OnInit {
 
 
   registerUser = () => {
-    this.userService.addUser(this.user).subscribe(res => {
-      console.log(res); 
+    this.userService.registerUser(this.user).subscribe(res => {
+      console.log("RES", res); 
     }); ;
   }
 }

@@ -1,0 +1,31 @@
+<section>
+    <div *ngIf="formError">{{ formError }}</div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <div class="modal-dialog w-100 mx-auto" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="title" fxLayout="row" fxLayoutAlign="center center">Login!!</h3>
+                </div>
+                <div>
+                    <form (submit)="formSubmit()" [formGroup]="loginForm" class="" method="get" id="userId">
+                        <br>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Email</mat-label>
+                            <input matInput name="email" type="text" formControlName="email">
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Password</mat-label>
+                            <input matInput name="password" type="text" formControlName="password">
+                        </mat-form-field>
+                        <br>
+                        <div fxLayout="row" fxLayoutAlign="center center" class="footer">
+                            <button mat-button color="primary" class="btn-form" id="sendMessage" type="submit">Login</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

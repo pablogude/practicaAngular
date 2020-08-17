@@ -10,8 +10,8 @@
         <!-- menu -->
         <div class="example-button-row">
             <button mat-stroked-button routerLink="/register">Registro</button>
-            <button mat-stroked-button>Login</button>
-            <button mat-stroked-button>Cerrar Sesión</button>
+            <button mat-stroked-button routerLink="/login">Login</button>
+            <button mat-stroked-button (click)="cerrarSesion()">Cerrar Sesión</button>
         </div>
     </div>
 </section>

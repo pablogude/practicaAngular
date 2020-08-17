@@ -8,41 +8,36 @@ import { User } from '../models/user';
 @Injectable({
   providedIn: 'root'
 })
-export class PostService {
+export class UserService {
 
-private baseUrl = environment.apiUrlReqRes + 'api/users';
+private baseUrl = environment.apiUrlReqRes + '/api';
 
   constructor( private apiService: ApiService) { }
   getUsers(): Observable<any> {
-    return this.apiService.get( this.baseUrl,  new HttpParams());
+    return this.apiService.get( `${this.baseUrl}/users`,  new HttpParams());
 
   }
 
   getUserById(id: string): Observable<any> {
-    return this.apiService.get(`${this.baseUrl}/${id}`, new HttpParams());
+    return this.apiService.get(`${this.baseUrl}/users/${id}`, new HttpParams());
 
   }
 
   deleteUser(id: string): Observable<User> {
-    return this.apiService.delete(`${this.baseUrl}/${id}`);
+    return this.apiService.delete(`${this.baseUrl}/users/${id}`);
   }
 
-  addUser(user: User): Observable<User> {
-    return this.apiService.post(`${this.baseUrl}`, user);
+  registerUser(user: User): Observable<User> {
+    return this.apiService.post(`${this.baseUrl}/register`, user);
   }
 
   updateUser(id: string, user: User): Observable<User> {
-    return this.apiService.put(`${this.baseUrl}/${id}`, user);
+    return this.apiService.put(`${this.baseUrl}/users/${id}`, user);
   }
 
-  saveUser(user: User): Observable<User> {
-    if(user.id) {
-      return this.apiService.put(`${this.baseUrl}/${user.id}`, user);
-    }
-    return this.apiService.post(`${this.baseUrl}`, user);
+  loginUser(user: User): Observable<User> {
+    return this.apiService.post(`${this.baseUrl}/login`, user);
   }
-
-
 
   
 }
