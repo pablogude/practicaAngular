@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Input,  ViewChild } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, ViewChild } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { environment } from 'src/environments/environment';
 import { Post } from 'src/app/models/post';
@@ -13,9 +13,9 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
   styleUrls: ['./post-list.component.scss'],
 })
 export class PostListComponent implements OnInit, OnChanges {
-
-  public isAuthor: boolean = true; 
-  public posts: Post[];
+  isLoggedIn: boolean = false;
+  isAuthor: boolean = true;
+  posts: Post[];
   u: User = {};
   displayedColumns: string[] = ['Id', 'title', 'actions'];
   //dataSource = new MatTableDataSource<Post>(this.posts);
@@ -25,19 +25,23 @@ export class PostListComponent implements OnInit, OnChanges {
   constructor(
     private postService: PostService,
     private localStorage: LocalStorageService
-    ) {}
+  ) {}
 
   ngOnInit(): void {
 
+    if (localStorage.getItem("--token-Users&Posts") != null) {
+      this.isLoggedIn = true; 
+      console.log("isLoggedIn", this.isLoggedIn);
+    } else {
+      console.log("isLoggedIn", this.isLoggedIn);
+    }
     this.u = JSON.parse(this.localStorage.getToken());
 
     this.getPosts();
     //this.dataSource.paginator = this.paginator;
   }
 
-  ngOnChanges() {
-
-  }
+  ngOnChanges() {}
 
   getPosts = () => {
     console.log(`${environment.apiUrlJsonPlaceholder}/posts`);

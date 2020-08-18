@@ -9,7 +9,9 @@ import { ProfileDeleteComponent } from './components/profile-delete/profile-dele
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { PostDeleteComponent } from './components/post-delete/post-delete.component';
 import { PostEditComponent } from './components/post-edit/post-edit.component';
-import { UserGuard } from 'src/app/guards/user.guard'; 
+import { UserGuard } from 'src/app/guards/user.guard';
+import { UserLoginGuard } from 'src/app/guards/user-login.guard'; 
+
 
 const routes: Routes = [
   {
@@ -35,10 +37,12 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
+    canActivate : [UserLoginGuard]
   },
   {
     path: 'login',
     component: LoginComponent,
+    canActivate : [UserLoginGuard]
   },
   {
     path: 'profile',

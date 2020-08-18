@@ -1,26 +1,32 @@
-<div fxLayout="row" fxLayoutAlign="center center">
-    <h3>Your Profile</h3>
-</div>
-<div fxLayout="row" fxLayoutAlign="center center">
-    <mat-card>
-        <mat-card-header>
+<section>
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <app-go-back></app-go-back>
+    </div>
+    <mat-divider></mat-divider>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <h3>Your Profile</h3>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-card>
+            <mat-card-header>
 
-            <img src="{{ user.avatar }}" alt="">
-            
-        </mat-card-header>
-       <br> 
-        <mat-card-content>
-            <mat-card-title> Name: {{ user.first_name}} </mat-card-title>
-            <mat-card-subtitle> Surname: {{ user.last_name }} </mat-card-subtitle>
-            <mat-card-subtitle> email address: {{ user.email }}</mat-card-subtitle>
-        </mat-card-content>
-        <div fxLayout="row" fxLayoutAlign="center center">
-            <a routerLink="/profile/edit"><span class="material-icons">
-                edit
-            </span></a>
-            <a routerLink="/profile/delete"><span class="material-icons">
-                delete
-            </span></a>
-        </div>
-    </mat-card>
-</div>
+                <img src="{{ user.avatar }}" alt="">
+
+            </mat-card-header>
+            <br>
+            <mat-card-content>
+                <mat-card-title> Name: {{ user.first_name}} </mat-card-title>
+                <mat-card-subtitle> Surname: {{ user.last_name }} </mat-card-subtitle>
+                <mat-card-subtitle> email address: {{ user.email }}</mat-card-subtitle>
+            </mat-card-content>
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <a routerLink="/profile/edit"><span class="material-icons">
+                        edit
+                    </span></a>
+                <a routerLink="/profile/delete"><span class="material-icons">
+                        delete
+                    </span></a>
+            </div>
+        </mat-card>
+    </div>
+</section>
