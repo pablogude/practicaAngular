@@ -3,6 +3,7 @@ import { User } from 'src/app/models/user';
 import { FormGroup, FormControl } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-edit',
@@ -25,7 +26,8 @@ export class ProfileEditComponent implements OnInit {
 
   constructor(
     private userService: UserService, 
-    private localStorage: LocalStorageService
+    private localStorage: LocalStorageService, 
+    private route: Router
   ) { }
 
   ngOnInit(): void {
@@ -55,6 +57,7 @@ export class ProfileEditComponent implements OnInit {
   updateUser = () => {
     this.userService.updateUser(this.u.id , this.user).subscribe(res => {
       console.log("RES", res); 
+      this.route.navigate(['/profile']);
     }); 
   }
 
