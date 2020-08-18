@@ -8,19 +8,29 @@ import { ProfileEditComponent } from './components/profile-edit/profile-edit.com
 import { ProfileDeleteComponent } from './components/profile-delete/profile-delete.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { PostDeleteComponent } from './components/post-delete/post-delete.component';
+import { PostEditComponent } from './components/post-edit/post-edit.component';
+import { UserGuard } from 'src/app/guards/user.guard'; 
 
 const routes: Routes = [
   {
     path: '',
     component: PostListComponent,
+    canActivate: [UserGuard]
   },
   {
     path: 'post/:id',
     component: PostDetailComponent,
+    canActivate: [UserGuard]
+  },
+  {
+    path: 'post/edit/:id',
+    component: PostEditComponent,
+    canActivate: [UserGuard]
   },
   {
     path: 'post/delete/:id',
     component: PostDeleteComponent,
+    canActivate: [UserGuard]
   },
   {
     path: 'register',
@@ -33,14 +43,17 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfilePageComponent,
+    canActivate: [UserGuard]
   },
   {
     path: 'profile/edit',
     component: ProfileEditComponent,
+    canActivate: [UserGuard]
   },
   {
     path: 'profile/delete',
     component: ProfileDeleteComponent,
+    canActivate: [UserGuard]
   },
 ];
 
