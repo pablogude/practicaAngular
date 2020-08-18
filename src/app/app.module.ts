@@ -13,6 +13,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { PostListComponent } from './components/post-list/post-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
+import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
+import { ProfileDeleteComponent } from './components/profile-delete/profile-delete.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ProfilePageComponent } from './components/profile-page/profile-page.com
     RegisterComponent,
     PostListComponent,
     LoginComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    ProfileEditComponent,
+    ProfileDeleteComponent
   ],
   imports: [
     BrowserModule,

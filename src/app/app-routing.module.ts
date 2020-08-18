@@ -4,6 +4,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { PostListComponent } from './components/post-list/post-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
+import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
+import { ProfileDeleteComponent } from './components/profile-delete/profile-delete.component';
 
 const routes: Routes = [
   {
@@ -21,6 +23,14 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfilePageComponent,
+  },
+  {
+    path: 'profile/edit',
+    component: ProfileEditComponent,
+  },
+  {
+    path: 'profile/delete',
+    component: ProfileDeleteComponent,
   },
 ];
 
