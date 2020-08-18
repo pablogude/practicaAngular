@@ -1,0 +1,16 @@
+<section>
+    <mat-divider></mat-divider>
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <app-go-back></app-go-back>
+    </div>
+    <mat-divider></mat-divider>
+    <div *ngIf="infoMessage" >{{ infoMessage }}</div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <div>
+            <strong>Estás seguro que deseas eliminar la entrada</strong> {{ post.title }}
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <button mat-button color="primary" (click)="deletePost()">Borrar</button>
+            </div>
+        </div>
+    </div>
+</section>

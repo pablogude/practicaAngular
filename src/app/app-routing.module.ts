@@ -7,6 +7,7 @@ import { ProfilePageComponent } from './components/profile-page/profile-page.com
 import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
 import { ProfileDeleteComponent } from './components/profile-delete/profile-delete.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
+import { PostDeleteComponent } from './components/post-delete/post-delete.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'post/:id',
     component: PostDetailComponent,
+  },
+  {
+    path: 'post/delete/:id',
+    component: PostDeleteComponent,
   },
   {
     path: 'register',
