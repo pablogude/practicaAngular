@@ -9,12 +9,22 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  isLoggedIn: boolean = false;
+
   constructor(
     private localStorage: LocalStorageService, 
     private route: Router
   ) { }
 
   ngOnInit(): void {
+
+    if (localStorage.getItem("--token-Users&Posts") != null) {
+      this.isLoggedIn = true; 
+      console.log("isLoggedIn", this.isLoggedIn);
+    } else {
+      console.log("isLoggedIn", this.isLoggedIn);
+    }
+
   }
 
   public cerrarSesion() {
