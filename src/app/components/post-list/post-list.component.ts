@@ -20,6 +20,7 @@ export class PostListComponent implements OnInit, OnChanges {
   posts: Post[];
   u: User = {};
   displayedColumns: string[] = ['Id', 'title', 'actions'];
+
   //dataSource = new MatTableDataSource<Post>(this.posts);
 
   //@ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -49,7 +50,9 @@ export class PostListComponent implements OnInit, OnChanges {
     //this.dataSource.paginator = this.paginator;
   }
 
-  ngOnChanges() {}
+  ngOnChanges() {
+  
+  }
 
   getPosts = () => {
     this.postService.getPosts().subscribe((res) => {
@@ -60,6 +63,7 @@ export class PostListComponent implements OnInit, OnChanges {
 
   getMyPosts = () => {
     this.postService.getMyPosts(`${this.u.id}`).subscribe((res) => {
+      console.log("ERS", res);
       this.posts = res;
       console.log('Mis posts', this.posts);
     });
