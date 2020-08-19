@@ -1,8 +1,9 @@
 <section>
-  <div *ngIf="isLoggedIn" fxLayout="row" fxLayoutAlign="center center">
-    <button mat-stroked-button routerLink="/">My Posts</button>
+  <div *ngIf="isLoggedIn"  fxLayout="row" fxLayoutAlign="center center" >
+    <button mat-stroked-button (click)="getMyPosts()">My Posts</button>
     <button mat-stroked-button routerLink="/profile">Profile</button>
   </div>
+  <mat-divider></mat-divider>
   <div fxLayout="row" fxLayoutAlign="center center">
 
     <table mat-table [dataSource]="posts" class="mat-elevation-z8">
@@ -26,7 +27,7 @@
         <th mat-header-cell *matHeaderCellDef> Actions </th>
         <div *ngIf="isAuthor">
           <td mat-cell *matCellDef="let post"><a routerLink="/post/edit/{{ post.id }}"><span>edit </span></a> <a
-              routerLink="/post/delete/{{ post.id }}"><span>delete</span></a>{{post.id}} </td>
+              routerLink="/post/delete/{{ post.id }}"><span>delete</span></a></td>
         </div>
 
       </ng-container>

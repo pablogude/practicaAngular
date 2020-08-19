@@ -4,6 +4,7 @@ import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { Location } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile-delete',
@@ -18,12 +19,16 @@ export class ProfileDeleteComponent implements OnInit {
     private localStorage: LocalStorageService,
     private userService: UserService, 
     private route: Router, 
-    private location: Location
+    private location: Location, 
+    private title: Title
   ) {
     
    }
 
   ngOnInit(): void {
+
+    this.title.setTitle("Delete Profile");
+
     this.u = JSON.parse(this.localStorage.getToken());  
   }
 

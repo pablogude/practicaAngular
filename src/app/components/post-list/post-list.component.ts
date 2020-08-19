@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { User } from 'src/app/models/user';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-post-list',
@@ -15,6 +16,7 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 export class PostListComponent implements OnInit, OnChanges {
   isLoggedIn: boolean = false;
   isAuthor: boolean = true;
+  idAuthor; 
   posts: Post[];
   u: User = {};
   displayedColumns: string[] = ['Id', 'title', 'actions'];
@@ -24,10 +26,14 @@ export class PostListComponent implements OnInit, OnChanges {
 
   constructor(
     private postService: PostService,
-    private localStorage: LocalStorageService
+    private localStorage: LocalStorageService, 
+    private title: Title
   ) {}
 
   ngOnInit(): void {
+
+
+    this.title.setTitle("Feed");
 
     if (localStorage.getItem("--token-Users&Posts") != null) {
       this.isLoggedIn = true; 
@@ -37,6 +43,8 @@ export class PostListComponent implements OnInit, OnChanges {
     }
     this.u = JSON.parse(this.localStorage.getToken());
 
+    this.idAuthor = this.u.id; 
+
     this.getPosts();
     //this.dataSource.paginator = this.paginator;
   }
@@ -44,10 +52,17 @@ export class PostListComponent implements OnInit, OnChanges {
   ngOnChanges() {}
 
   getPosts = () => {
-    console.log(`${environment.apiUrlJsonPlaceholder}/posts`);
     this.postService.getPosts().subscribe((res) => {
       this.posts = res;
       console.log('This posts', this.posts);
     });
   };
+
+  getMyPosts = () => {
+    this.postService.getMyPosts(`${this.u.id}`).subscribe((res) => {
+      this.posts = res;
+      console.log('Mis posts', this.posts);
+    });
+    
+  }
 }

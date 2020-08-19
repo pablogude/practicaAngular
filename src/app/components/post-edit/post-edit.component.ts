@@ -3,6 +3,7 @@ import { Post } from 'src/app/models/post';
 import { FormGroup, FormControl } from '@angular/forms';
 import { PostService } from 'src/app/services/post.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-post-edit',
@@ -25,7 +26,8 @@ export class PostEditComponent implements OnInit {
   constructor(
     private postService: PostService,
     private router: Router, 
-    private route: ActivatedRoute
+    private route: ActivatedRoute, 
+    private title: Title
   ) {
     this.route.paramMap.subscribe(params => {
       this.id=params.get('id');
@@ -34,6 +36,9 @@ export class PostEditComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
+    this.title.setTitle("Edit Post"); 
+
     this.postService.getPostById(this.id).subscribe(res => {
       this.post = res;
       this.postForm.controls.title.setValue(this.post.title);

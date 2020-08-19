@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { Router } from '@angular/router';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-header',

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Post } from 'src/app/models/post';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-post-delete',
@@ -17,14 +18,19 @@ export class PostDeleteComponent implements OnInit {
   constructor(
     private postService: PostService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute, 
+    private title: Title
   ) {
     this.route.paramMap.subscribe((params) => {
       this.id = params.get('id');
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    this.title.setTitle("Delete Post"); 
+
+  }
 
   deletePost = (id: string = this.id) => {
     this.postService.deletePost(id).subscribe((res) => {

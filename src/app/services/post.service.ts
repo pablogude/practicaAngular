@@ -18,6 +18,11 @@ private baseUrl = environment.apiUrlJsonPlaceholder + '/posts';
 
   }
 
+  getMyPosts(id: string): Observable<any> {
+    return this.apiService.get( `${this.baseUrl}/?userId=${id}`,  new HttpParams());
+    
+  }
+
   getPostById(id: string): Observable<any> {
     return this.apiService.get(`${this.baseUrl}/${id}`, new HttpParams());
 

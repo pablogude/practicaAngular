@@ -28,12 +28,12 @@
                         <br>
                         <mat-form-field appearance="fill">
                             <mat-label>Password</mat-label>
-                            <input matInput name="password" type="text" formControlName="password">
+                            <input matInput name="password" type="password" formControlName="password">
                         </mat-form-field>
                         <br>
                         <mat-form-field appearance="fill">
                             <mat-label>Confirm Password</mat-label>
-                            <input matInput name="confirm_password" type="text" formControlName="confirm_password">
+                            <input matInput name="confirm_password" type="password" formControlName="confirm_password">
                         </mat-form-field>
                         <br>
                         <mat-form-field appearance="fill">
@@ -42,6 +42,7 @@
                           </mat-form-field>
                           <br>
                         <div fxLayout="row" fxLayoutAlign="center center" class="footer">
+                            <button mat-button color="warn" class="btn-form" id="sendMessage" (click)="onReset()">Reset</button>
                             <button mat-button color="primary" class="btn-form" id="sendMessage" type="submit">Register</button>
                         </div>
                     </form>

@@ -4,6 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile-edit',
@@ -27,12 +28,13 @@ export class ProfileEditComponent implements OnInit {
   constructor(
     private userService: UserService, 
     private localStorage: LocalStorageService, 
-    private route: Router
+    private route: Router, 
+    private title: Title
   ) { }
 
   ngOnInit(): void {
 
-    console.log("lcoas", this.localStorage.getToken()); 
+    this.title.setTitle("Edit Profile"); 
 
     this.u = JSON.parse(this.localStorage.getToken());  
 

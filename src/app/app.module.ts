@@ -19,6 +19,7 @@ import { GoBackComponent } from './components/go-back/go-back.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { PostDeleteComponent } from './components/post-delete/post-delete.component';
 import { PostEditComponent } from './components/post-edit/post-edit.component';
+import { MyPostsComponent } from './components/my-posts/my-posts.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { PostEditComponent } from './components/post-edit/post-edit.component';
     GoBackComponent,
     PostDetailComponent,
     PostDeleteComponent,
-    PostEditComponent
+    PostEditComponent,
+    MyPostsComponent
   ],
   imports: [
     BrowserModule,

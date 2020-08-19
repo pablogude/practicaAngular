@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { User } from 'src/app/models/user';
 import { tokenName } from '@angular/compiler';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile-page',
@@ -14,16 +15,17 @@ export class ProfilePageComponent implements OnInit {
   public u = {};
 
   constructor(
-    private localStorage: LocalStorageService
+    private localStorage: LocalStorageService, 
+    private title: Title
   ) { }
 
   ngOnInit(): void {
+
+    this.title.setTitle("My Profile Page");
     
     if (localStorage.getItem("--token-Users&Posts") != null) {
-      console.log(this.localStorage.getToken());
       this.u = JSON.parse(this.localStorage.getToken()); 
-      this.user = this.u; 
-      console.log("UUUUUSER", this.user); 
+      this.user = this.u;  
     }
     
   }
