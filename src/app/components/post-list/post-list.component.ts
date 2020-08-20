@@ -15,15 +15,14 @@ import { Title } from '@angular/platform-browser';
 })
 export class PostListComponent implements OnInit, OnChanges {
   isLoggedIn: boolean = false;
-  isAuthor: boolean = true;
   idAuthor; 
   posts: Post[];
   u: User = {};
   displayedColumns: string[] = ['Id', 'title', 'actions'];
 
-  //dataSource = new MatTableDataSource<Post>(this.posts);
+  dataSource = new MatTableDataSource<Post>(this.posts);
 
-  //@ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   constructor(
     private postService: PostService,
@@ -36,6 +35,8 @@ export class PostListComponent implements OnInit, OnChanges {
 
     this.title.setTitle("Feed");
 
+    this.dataSource.paginator = this.paginator;
+
     if (localStorage.getItem("--token-Users&Posts") != null) {
       this.isLoggedIn = true; 
       console.log("isLoggedIn", this.isLoggedIn);
@@ -47,7 +48,7 @@ export class PostListComponent implements OnInit, OnChanges {
     this.idAuthor = this.u.id; 
 
     this.getPosts();
-    //this.dataSource.paginator = this.paginator;
+    
   }
 
   ngOnChanges() {
@@ -57,6 +58,7 @@ export class PostListComponent implements OnInit, OnChanges {
   getPosts = () => {
     this.postService.getPosts().subscribe((res) => {
       this.posts = res;
+     
       console.log('This posts', this.posts);
     });
   };

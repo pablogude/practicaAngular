@@ -20,7 +20,6 @@ import { PostDetailComponent } from './components/post-detail/post-detail.compon
 import { PostDeleteComponent } from './components/post-delete/post-delete.component';
 import { PostEditComponent } from './components/post-edit/post-edit.component';
 import { MyPostsComponent } from './components/my-posts/my-posts.component';
-import { FeedPostListComponent } from './components/feed-post-list/feed-post-list.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +37,6 @@ import { FeedPostListComponent } from './components/feed-post-list/feed-post-lis
     PostDeleteComponent,
     PostEditComponent,
     MyPostsComponent,
-    FeedPostListComponent
   ],
   imports: [
     BrowserModule,
