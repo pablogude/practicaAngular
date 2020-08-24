@@ -1,10 +1,16 @@
 <section>
-  <div *ngIf="isLoggedIn" fxLayout="row" fxLayoutAlign="center center">
-    <button mat-stroked-button (click)="getMyPosts()">My Posts</button>
-    <button mat-stroked-button routerLink="/profile">Profile</button>
+  <div id="menu" *ngIf="isLoggedIn" fxLayout="row" fxLayoutAlign="center center">
+    <button mat-button color="accent" mat-stroked-button (click)="getMyPosts()">My Posts</button>
+    <button mat-button color="accent" mat-stroked-button routerLink="/profile">Profile</button>
   </div>
   <mat-divider></mat-divider>
-  <div fxLayout="row" fxLayoutAlign="center center">
+  <div fxLayout="column" fxLayoutAlign="start stretch">
+
+    <div fxLayout fxLayoutAlign="center center">
+      <mat-form-field fxFlex="40%">
+        <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </div>
 
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -42,8 +48,13 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    <div fxLayout="column" fxLayoutAlign="end end">
+      <mat-paginator [pageSizeOptions]="[15, 25, 50]" showFirstLastButtons></mat-paginator>
+    </div>
+
   </div>
+
+
 </section>
 
 

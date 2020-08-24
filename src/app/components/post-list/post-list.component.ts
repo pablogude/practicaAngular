@@ -14,13 +14,12 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./post-list.component.scss'],
 })
 export class PostListComponent implements OnInit, OnChanges {
+  dataSource;
   isLoggedIn: boolean = false;
   idAuthor; 
   posts: Post[];
   u: User = {};
   displayedColumns: string[] = ['Id', 'title', 'actions'];
-
-  dataSource = new MatTableDataSource<Post>(this.posts);
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
@@ -32,16 +31,11 @@ export class PostListComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
 
-
     this.title.setTitle("Feed");
-
-    this.dataSource.paginator = this.paginator;
 
     if (localStorage.getItem("--token-Users&Posts") != null) {
       this.isLoggedIn = true; 
-      console.log("isLoggedIn", this.isLoggedIn);
     } else {
-      console.log("isLoggedIn", this.isLoggedIn);
     }
     this.u = JSON.parse(this.localStorage.getToken());
 
@@ -58,17 +52,28 @@ export class PostListComponent implements OnInit, OnChanges {
   getPosts = () => {
     this.postService.getPosts().subscribe((res) => {
       this.posts = res;
-     
-      console.log('This posts', this.posts);
+      this.dataSource = new MatTableDataSource<Post>(this.posts);
+      this.dataSource.paginator = this.paginator;
+    },
+    (error) => {
+      console.log(error);
     });
   };
 
   getMyPosts = () => {
     this.postService.getMyPosts(`${this.u.id}`).subscribe((res) => {
-      console.log("ERS", res);
       this.posts = res;
-      console.log('Mis posts', this.posts);
+      this.dataSource = new MatTableDataSource<Post>(this.posts);
+      this.dataSource.paginator = this.paginator;
+
+    },
+    (error) => {
+      console.log(error);
     });
     
+  }
+
+  public doFilter = (value: string) => {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 }

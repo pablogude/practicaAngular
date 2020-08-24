@@ -3,6 +3,7 @@ import { PostService } from 'src/app/services/post.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Post } from 'src/app/models/post';
 import { Title } from '@angular/platform-browser';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-post-delete',
@@ -19,6 +20,7 @@ export class PostDeleteComponent implements OnInit {
     private postService: PostService,
     private router: Router,
     private route: ActivatedRoute, 
+    private location: Location,
     private title: Title
   ) {
     this.route.paramMap.subscribe((params) => {
@@ -39,5 +41,10 @@ export class PostDeleteComponent implements OnInit {
       this.router.navigate(['/']);
     });
   };
+
+  back = () => {
+    this.location.back();
+
+  }
 
 }

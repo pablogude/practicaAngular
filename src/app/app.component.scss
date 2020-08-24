@@ -1,0 +1,46 @@
+/*------------------------------------------------------------------
+[App]
+-------------------------------------------------------------------*/
+
+:host {
+  ::ng-deep {
+    .page-wrapper {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      .app-footer {
+        background-color: var(--color-light);
+        padding: 1rem;
+        text-align: center;
+      }
+      .app-header {
+        .mat-toolbar {
+          .spacer {
+            flex: 1 1 auto;
+          }
+        }
+      }
+      .mat-sidenav-container {
+        flex: 1 0 auto;
+        height: calc(100vh - 116px);
+        .mat-nav-list {
+          .mat-list-item {
+            .mat-list-item-content {
+              padding: 0 1.5rem;
+            }
+          }
+        }
+        .mat-sidenav {
+          min-width: 250px;
+        }
+        .mat-sidenav-content {
+          .app-main {
+            .main-inner {
+              margin: 2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
